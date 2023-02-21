@@ -82,7 +82,7 @@ if (isset($_POST['photoID'])){
 
     $photoID = $_POST["photoID"];
     // Increment the likes for the corresponding image
-    $sql = "UPDATE gallery SET likes = likes + 1 WHERE idGallery = '$photoID'";
+    $sql = "UPDATE gallery SET likesGallery = likesGallery + 1 WHERE idGallery = '$photoID'";
     $result = mysqli_query($conn, $sql);
 
     mysqli_close($conn);
