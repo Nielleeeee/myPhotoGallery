@@ -89,7 +89,9 @@ if (isset($_POST['photoID'])){
 
     if ($result) {
         header("Location :photogallery.php?photoID=" + $photoID);
+        echo "<script>alert('Something went wrong!')</script>";
     } else {
+        header("Location :photogallery.php?photoID=" + $photoID);
         echo "<script>alert('Something went wrong!')</script>";
     }
 
