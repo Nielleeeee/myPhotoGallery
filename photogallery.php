@@ -143,7 +143,8 @@ include_once 'dbh.php';
                     </div>
                     <?php 
                     if (isset($_SESSION["email"])){
-                        echo '<form action="upload.inc.php" method="post"><button type="submit" name="likes" class="like-button">Like</button></form>';
+                        $photoLikes = $_GET['photoID'];
+                        echo '<form action="upload.inc.php?photoID='.$photoID.'" method="post"><button type="submit" name="submit-like" class="like-button">Like</button></form>';
                     }
                     ?>
                 </div>

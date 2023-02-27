@@ -78,21 +78,20 @@ if (isset($_POST['submit-upload'])){
 
 }
 
-if (isset($_POST['photoID'])){
+if (isset($_POST['submit-like'])){
 
-    $photoID = $_POST["photoID"];
+    $photoID = $_GET["photoID"];
     // Increment the likes for the corresponding image
     $sql = "UPDATE gallery SET likesGallery = likesGallery + 1 WHERE idGallery = '$photoID'";
-    $result = mysqli_query($conn, $sql);
-
-    mysqli_close($conn);
-
-    if ($result) {
-        header("Location :photogallery.php?photoID=" + $photoID);
-        echo "<script>alert('Something went wrong!')</script>";
-    } else {
-        header("Location :photogallery.php?photoID=" + $photoID);
-        echo "<script>alert('Something went wrong!')</script>";
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)){
+        header("location: photogallery.php?error=statementfailed");
+        exit();
     }
+    
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    header("location: photogallery.php?error=none");
+    exit();
 
 }
